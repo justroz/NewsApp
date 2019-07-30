@@ -1,7 +1,9 @@
 let articleDisplay = document.getElementById("articleDisplay")
 let maxDay = document.getElementById("dateInput")
-let submitSearchButton = document.getElementById("submitSearchButton")
+//let submitSearchButton = document.getElementById("submitSearchButton")
 let dateInput = document.getElementById("dateInput")
+let displayDate = document.getElementById("displayDate")
+document.getElementById("submitForm").addEventListener("submit", submitFunction);
 
 //function to get the max date as today
 function maxInputDay(){
@@ -22,7 +24,7 @@ function maxInputDay(){
 
 
 
-submitSearchButton.addEventListener('click', () => {
+function submitFunction() {
 
     let dateToSearch = dateInput.value.split("-");
     monthToSearch = dateToSearch[1];
@@ -31,6 +33,9 @@ submitSearchButton.addEventListener('click', () => {
     console.log(dateToSearch)
     let newsURL = `https://api.nytimes.com/svc/archive/v1/${yearToSearch}/${monthToSearch}.json?api-key=AwnbJmlF5QhUDWKddI3arHnH4z7sWClJ`
 
+    let displayTheDate = dateInput.value
+
+    displayDate.innerHTML = displayTheDate
 
     async function displayArticles () {
 
@@ -61,4 +66,4 @@ submitSearchButton.addEventListener('click', () => {
     
     displayArticles()
 
-})
+}
