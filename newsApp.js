@@ -1,5 +1,6 @@
 let articleDisplay = document.getElementById("articleDisplay")
 let maxDay = document.getElementById("dateInput")
+
 //let submitSearchButton = document.getElementById("submitSearchButton")
 let dateInput = document.getElementById("dateInput")
 let displayDate = document.getElementById("displayDate")
@@ -25,7 +26,8 @@ function maxInputDay(){
 
 
 function submitFunction() {
-
+    event.preventDefault()
+    
     let dateToSearch = dateInput.value.split("-");
     monthToSearch = dateToSearch[1];
     monthToSearch = parseInt(monthToSearch);
