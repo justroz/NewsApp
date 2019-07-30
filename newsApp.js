@@ -1,11 +1,35 @@
 let articleDisplay = document.getElementById("articleDisplay")
-let month = document.getElementById("month")
-let year = document.getElementById("year")
-let searchButton = document.getElementById("searchButton")
-let newsURL = "https://api.nytimes.com/svc/archive/v1/2019/1.json?api-key=AwnbJmlF5QhUDWKddI3arHnH4z7sWClJ"
+let maxDay = document.getElementById("dateInput")
+let submitSearchButton = document.getElementById("submitSearchButton")
+let dateInput = document.getElementById("dateInput")
+
+//function to get the max date as today
+function maxInputDay(){
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth()+1; //January is 0
+    let yyyy = today.getFullYear();
+    if(dd < 10){
+        dd = '0'+ dd
+    }
+    if(mm < 10){
+        mm = '0' + mm
+    }
+    today = yyyy + '-' + mm + '-' + dd;
+    maxDay.setAttribute("max", today);
+ }
+ maxInputDay()
+
 
 
 searchButton.addEventListener('click', () => {
+
+    let dateToSearch = dateInput.value.split("-");
+    monthToSearch = dateToSearch[1];
+    yearToSearch = dateToSearch[0]
+    console.log(dateToSearch)
+    let newsURL = https://api.nytimes.com/svc/archive/v1/${yearToSearch}/${monthToSearch}.json?api-key=AwnbJmlF5QhUDWKddI3arHnH4z7sWClJ
+    console.log(newsURL)
 
     async function displayArticles () {
 

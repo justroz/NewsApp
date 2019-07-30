@@ -9,21 +9,11 @@
 
 <body>
 
-<select id="month">
-    <option>January</option>
-    <option>February</option>
-    <option>March</option>
-</select>
-
-<select id="day">
-    <option>1</option>
-    <option>2</option>
-    <option>16</option>
-</select>
-
-<input type="text" id="year" placeholder="Enter Year">
-
-<button id="searchButton">Search</button>
+    <div class="searchBar">
+        <label for="dateInput">Enter the date you wish to search for:</label>
+        <input id="dateInput" name="dateInput" min="1851-01-01" max="2019-01-01"  type="date">
+        <button id="submitSearchButton">Submit</button>
+</div>
 
 
 <div id="articleDisplay">
