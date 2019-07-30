@@ -1,27 +1,38 @@
 <html>
 
 <head>
-<link rel="stylesheet" href="newsApp.css">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 
 
 <body>
-    <form id="submitForm" action="#" method="GET">
+    <form id="submitForm" method="GET">
         <div class="searchBar">
             <label for="dateInput">Enter the date you wish to search for:</label>
             <input id="dateInput" name="dateInput" min="1851-01-01" max="2019-01-01"  type="date">
-            <button id="submitSearchButton">Submit</button>
+            <button type="submit" id="submitSearchButton">Submit</button>
         </div>
     </form>
-<div id="displayDate">The date being displayed is: </div>
+    <div>
+    The date being displayed is: 
+<span id="displayDate"></span>
+</div>
+
+
 <div id="articleDisplay">
 
 
 </div>
-
-
+<!--
+    <div>
+        <br>
+        <a href="https://developer.nytimes.com/">
+            <img src="poweredby_nytimes_200a.png" alt="" width="200">
+        </a>
+    </div>
+-->
 <script src="newsApp.js"></script>
 </body>
 
