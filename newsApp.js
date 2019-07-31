@@ -25,15 +25,17 @@ function maxInputDay(){
 
 
 function submitFunction() {
+    event.preventDefault()
 
     let dateToSearch = dateInput.value.split("-");
     monthToSearch = dateToSearch[1];
     monthToSearch = parseInt(monthToSearch);
     yearToSearch = dateToSearch[0]
+    dayToSearch = dateToSearch[2]
     console.log(dateToSearch)
-    let newsURL = `https://api.nytimes.com/svc/archive/v1/${yearToSearch}/${monthToSearch}.json?api-key=AwnbJmlF5QhUDWKddI3arHnH4z7sWClJ`
+    let newsURL = `https://api.nytimes.com/svc/archive/v1/${yearToSearch}/${monthToSearch}.json?api-key=GFEciqybc9QEdFHWzX02J6O85EHFpJah`
 
-    let displayTheDate = dateInput.value
+    let displayTheDate = monthToSearch + '/' + dayToSearch + '/' + yearToSearch
 
     displayDate.innerHTML = displayTheDate
 
@@ -43,7 +45,7 @@ function submitFunction() {
         let json = await response.json() //access the data at the URL
         let articles = (Object.values(json)) //makes array of info in json
 
-
+        //console.log(articles)
 
         let searchedArticles = articles[1].docs.map (article => {
 
@@ -54,6 +56,7 @@ function submitFunction() {
                     <h4>${article.byline ? article.byline.original : "Author Unknown"}</h4>
                     <p>${article.snippet ? article.snippet : "Snippet Unavailable"}</p>
                     <p>${article.web_url ? article.web_url : "URL Unavailable"}</p>
+                    <p></p>
                     <span>${article._id}</span>
                     </div>`
 
