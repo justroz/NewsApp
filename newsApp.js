@@ -1,10 +1,10 @@
 let articleDisplay = document.getElementById("articleDisplay")
 let maxDay = document.getElementById("dateInput")
-
 //let submitSearchButton = document.getElementById("submitSearchButton")
 let dateInput = document.getElementById("dateInput")
 let displayDate = document.getElementById("displayDate")
 document.getElementById("submitForm").addEventListener("submit", submitFunction);
+let sectionName = document.getElementById("sectionName")
 
 //function to get the max date as today
 function maxInputDay(){
@@ -25,9 +25,83 @@ function maxInputDay(){
 
 
 
- function submitFunction() {
-    event.preventDefault()
 
+
+
+
+    async function retrieveArticles (newsURL) {
+
+        let response = await fetch(newsURL) //makes touch with the URL
+        let json = await response.json() //access the data at the URL
+        let articles = (Object.values(json)) //makes array of info in json
+        console.log(articles)
+        console.log("retrieve articles function successful")
+        return articles
+
+        //
+        //let filteredDesk = null
+    }
+
+    function filterArticles(articles) {
+        console.log(dateInput.value)
+        let articulos = articles[1].docs
+        //console.log(sectionName.value)
+        let possibleSections = []
+        let articleToReturn = articulos.filter(article => {
+            //console.log(article.section_name)
+            if(!possibleSections.includes(article.section_name)){
+                possibleSections.push(article.section_name)
+            }
+            return (article.pub_date.slice(0, 10) === dateInput.value && article.section_name === sectionName.value)
+        })
+        console.log('sections   ', possibleSections)
+        console.log(articleToReturn)
+        console.log("filter articles function successful")
+        return articleToReturn
+    }
+
+    /*
+    function evaluateArticles(articlesToReturn){
+        //console.log(articlesToReturn[0].includes(newsDesk.value))
+        //console.log(newsDesk.value)
+        let arrayOne = Object.values(articlesToReturn[0])
+        
+        console.log(arrayOne)
+
+        if(arrayOne.includes(newsDesk.value)){
+            displayArticles()
+        }else{
+            errorMessageFunction()
+        }
+    } */
+
+    function displayArticles(articlesToReturn){
+        searchedArticles = articlesToReturn.map(article => {
+
+        return `<div class="relevantArticles">
+        <h2>${article.headline.main ? article.headline.main : "Title Unknown"}</h2>
+        <h4>${article.byline ? article.byline.original : "Author Unknown"}</h4>
+        <p>${article.snippet ? article.snippet : "Snippet Unavailable"}</p>
+        <p>${article.web_url ? article.web_url : "URL Unavailable"}</p>
+        <p>${article.news_desk ? article.news_desk : "News Desk Unavailable"}</p>
+        <span>${article._id}</span>
+        </div>`
+
+    })
+
+        articleDisplay.innerHTML = searchedArticles.join("")
+        console.log("display articles function successful")     
+    
+}
+
+function errorMessageFunction(){
+    articleDisplay.innerHTML = `<div>Sorry, your search did not return any articles.</div>`
+}
+
+
+
+ async function submitFunction() {
+    event.preventDefault()
 
     let dateToSearch = dateInput.value.split("-");
     monthToSearch = dateToSearch[1];
@@ -41,32 +115,17 @@ function maxInputDay(){
 
     displayDate.innerHTML = displayTheDate
 
-    async function displayArticles () {
+    let articles = await retrieveArticles(newsURL)
+    let articlesToReturn = filterArticles(articles)
+    console.log(articlesToReturn)
+    displayArticles(articlesToReturn)
 
-        let response = await fetch(newsURL) //makes touch with the URL
-        let json = await response.json() //access the data at the URL
-        let articles = (Object.values(json)) //makes array of info in json
 
-        //console.log(articles)
 
-        let searchedArticles = articles[1].docs.map (article => {
-
-            if ((article.pub_date.slice(0,10))=== dateInput.value) {
-
-            return`<div class="relevantArticles"
-                    <h2>${article.headline.main ? article.headline.main : "Title Unknown"}</h2>
-                    <h4>${!article.byline ? "Author Unknown" : (article.byline.original == null) ? "Author Unknown" : article.byline.original}</h4>
-                    <p>${article.snippet ? article.snippet : "Snippet Unavailable"}</p>
-                    <p>${article.web_url ? article.web_url : "URL Unavailable"}</p>
-                    </div>`
-
-            }
-        })
-
-       articleDisplay.innerHTML = searchedArticles.join('')
-       
-    }
-    
-    displayArticles()
 
 }
+
+
+
+
+
