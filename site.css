@@ -1,3 +1,9 @@
+body {
+    background-image: url(images/newspaper1.jpg); 
+    background-repeat: no-repeat;
+    margin-left: 300px;
+}
+
 input {
     font-size: 30px;
 }
@@ -5,3 +11,4 @@ input {
 button {
     font-size: 30px;
 }
+

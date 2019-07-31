@@ -55,11 +55,9 @@ function maxInputDay(){
 
             return`<div class="relevantArticles"
                     <h2>${article.headline.main ? article.headline.main : "Title Unknown"}</h2>
-                    <h4>${article.byline ? article.byline.original : "Author Unknown"}</h4>
+                    <h4>${!article.byline ? "Author Unknown" : (article.byline.original == null) ? "Author Unknown" : article.byline.original}</h4>
                     <p>${article.snippet ? article.snippet : "Snippet Unavailable"}</p>
                     <p>${article.web_url ? article.web_url : "URL Unavailable"}</p>
-                    <p></p>
-                    <span>${article._id}</span>
                     </div>`
 
             }
