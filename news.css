@@ -1,51 +1,68 @@
-body{
-    margin: 0px;
-    padding: 0px;
-    font-family: sans-serif;
-    display: inline-block;
+
+li{
+  list-style-type: none;
+}
+a{
+  text-decoration: none;
 }
 nav{
-    width: 100px;
-    background: rgb(109, 109, 141);
+  width: 100vw;
+}
+nav{
+  width: 100vw;
+  background-color: #D6EFFF;
 }
 ul{
-    width: 80%;
-    margin: 0 auto;
-    padding: 0;
-}
-ul li{
-    list-style: none;
-    display: inline-block;
-  padding: 20px;
-}
-ul li:hover{
-    background: rgb(85, 94, 85);
-}
-ul li a{
-    color:rgb(75, 77, 75);
-    text-decoration: none;
-}
-.toggle{
-    width: 100%;
-    padding: 10px 20px;
-    background: black;
-    text-align: left;
-    box-sizing: border-box;
-    color:grey;
-    font-size: 20px;
-    display: none;
-}
-@media(max-width:768px){
-    .toggle{
-        display: block;
-        
-    }
-    ul{
-        width: 100%;
-    }
-    ul li{
-        display: block;
-        text-align: center;
-    }
+  margin: 0;
+  padding: 0;
 }
 
+body{
+  margin: 0;
+}
+ul{
+  margin: 0;
+  padding: 0;
+  
+ 
+  display: flex;
+}
+li{
+  list-style-type: none;  
+  
+  
+  margin: 0 2vw;
+}
+li{
+  list-style-type: none;  
+  margin: 0 2vw;
+  
+  font-size: 3vh;
+}
+a{
+  text-decoration: none;
+  
+ 
+  color: black;
+ 
+  padding: 2vw;
+  
+  font-family: monospace;
+}
+a:hover{
+  background-color: #C6E9FF;
+}
+@media only screen and (max-width: 500px) {
+ 
+  ul{
+    flex-direction: column;
+  }
+  
+ 
+  li{
+    margin: 0;
+  }
+ a{ 
+    display: block;
+  }
+}
