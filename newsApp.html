@@ -12,10 +12,58 @@
         <div class="searchBar">
             <label for="dateInput">Enter the date you wish to search for:</label>
             <input id="dateInput" name="dateInput" min="1851-01-01" max="2019-01-01"  type="date">
+            <label for="sectionName">Enter the section you wish to search for:</label>
+            <select name="sectionName" id="sectionName">
+                <option value="null"></option>
+                <option value="Opinion">Opinion</option>
+                <option value="Business Day">Business Day</option>
+                <option value="U.S.">U.S.</option>
+                <option value="Travel">Travel</option>
+                <option value="Arts">Arts</option>
+                <option value="Well">Well</option>
+                <option value="T Magazine">T Magazine</option>
+                <option value="Theater">Theater</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="World">World</option>
+                <option value="Sports">Sports</option>
+                <option value="New York">New York</option>
+                <option value="Health">Health</option>
+                <option value="Fashion & Style">Fashion & Style</option>
+                <option value="Science">Science</option>
+                <option value="Style">Style</option>
+                <option value="Food">Food</option>
+                <option value="Climate">Climate</option>
+                <option value="Crosswords & Games">Crosswords & Games</option>
+                <option value="The Upshot">The Upshot</option>
+                <option value="Briefing">Briefing</option>
+                <option value="Smarter Living">Smarter Living</option>
+                <option value="Podcasts">Podcasts</option>
+                <option value="Today’s Paper">Today’s Paper</option>
+                <option value="Movies">Movies</option>
+                <option value="Books">Books</option>
+                <option value="Reader Center">Reader Center</option>
+                <option value="Magazine">Magazine</option>
+                <option value="Obituaries">Obituaries</option>
+                <option value="Corrections">Corrections</option>
+                <option value="Corrections">Technology</option>
+                <option value="The Learning Network">The Learning Network</option>
+                <option value="Universal">Universal</option>
+                <option value="The Weekly">The Weekly</option>
+                <option value="Your Money">Your Money</option>
+                <option value="Sunday Review">Sunday Review</option>
+                <option value="Parenting">Parenting</option>
+                <option value="T Brand">T Brand</option>
+                <option value="Education">Education</option>
+                <option value="Times Insider">Times Insider</option>
+                <option value="Multimedia/Photos">Multimedia/Photos</option>
+                <option value="Video">Video</option>
+                <option value="Automobiles">Automobiles</option>
+            </select>
             <button type="submit" id="submitSearchButton">Submit</button>
         </div>
     </form>
     <div>
+        Keep in mind that not every article is listed under a section header.<br>
     The date being displayed is: 
 <span id="displayDate"></span>
 </div>
