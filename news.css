@@ -10,11 +10,13 @@ nav{
 }
 nav{
   width: 100vw;
-  background-color: #D6EFFF;
+  background-color: black;
 }
 ul{
   margin: 0;
   padding: 0;
+  display: flex;
+  align-items: center;
 }
 
 body{
@@ -43,15 +45,28 @@ a{
   text-decoration: none;
   
  
-  color: black;
+  color: white;
  
   padding: 2vw;
   
   font-family: monospace;
 }
-a:hover{
-  background-color: #C6E9FF;
+
+.active li{
+
+  float: right;
 }
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+nav ul li.active {float: right;}
+nav ul li:fourth-child { float: right; }
+
 @media only screen and (max-width: 500px) {
  
   ul{
