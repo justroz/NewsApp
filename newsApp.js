@@ -46,13 +46,114 @@ function submitFunction() {
         let json = await response.json() //access the data at the URL
         let articles = (Object.values(json)) //makes array of info in json
 
-        //console.log(articles)
+        console.log(articles)
+        //let filteredDesk = null
 
+
+        let searchedArticles = []
+        
+        if(articles[1].docs.includes(newsDesk.value)){ 
+
+
+        searchedArticles = articles[1].docs.map(article => {
+
+            //filteredDesk = articles[1].docs.filter(article => article.news_desk === newsDesk.value);
+
+            if((article.pub_date.slice(0, 10)) === dateInput.value && article.news_desk === newsDesk.value){
+                return `<div class="relevantArticles">
+                    <h2>${article.headline.main ? article.headline.main : "Title Unknown"}</h2>
+                    <h4>${article.byline ? article.byline.original : "Author Unknown"}</h4>
+                    <p>${article.snippet ? article.snippet : "Snippet Unavailable"}</p>
+                    <p>${article.web_url ? article.web_url : "URL Unavailable"}</p>
+                    <p>${article.news_desk ? article.news_desk : "News Desk Unavailable"}</p>
+                    <span>${article._id}</span>
+                    </div>`
+              
+
+            
+            
+            
+            
+            }else if((article.pub_date.slice(0, 10)) === dateInput.value && newsDesk.value === ""){
+                return `<div class="relevantArticles">
+                    <h2>${article.headline.main ? article.headline.main : "Title Unknown"}</h2>
+                    <h4>${article.byline ? article.byline.original : "Author Unknown"}</h4>
+                    <p>${article.snippet ? article.snippet : "Snippet Unavailable"}</p>
+                    <p>${article.web_url ? article.web_url : "URL Unavailable"}</p>
+                    <p>${article.news_desk ? article.news_desk : "News Desk Unavailable"}</p>
+                    <span>${article._id}</span>
+                    </div>`
+                      
+   
+                    
+            }        
+            
+            articleDisplay.innerHTML = searchedArticles.join('')    
+            
+        
+        })
+    }else{
+        searchedArticles = `<div class="relevantArticles">This does not exist.
+        </div>` 
+        
+            }
+        articleDisplay.innerHTML = searchedArticles
+
+        //console.log(searchedArticles)    
+    }
+        displayArticles()
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
         let searchedArticles = articles[1].docs.map (article => {
 
             //if there is a filter return the filter, else return everything if newsdesk == article.newsdesk
+            //console.log(article.news_desk)
+            
+            //if ((article.pub_date.slice(0,10)) === dateInput.value) {
+
+                let filteredDesk = searchedArticles.filter(article => article.news_desk == "Classified")
+                console.log(filteredDesk)
+
+
+                //console.log(article.news_desk)
+            /*return`<div class="relevantArticles"
+                    <h2>${article.headline.main ? article.headline.main : "Title Unknown"}</h2>
+                    <h4>${article.byline ? article.byline.original : "Author Unknown"}</h4>
+                    <p>${article.snippet ? article.snippet : "Snippet Unavailable"}</p>
+                    <p>${article.web_url ? article.web_url : "URL Unavailable"}</p>
+                    <p>${article.news_desk ? article.news_desk : "News Desk Unavailable"}</p>
+                    <span>${article._id}</span>
+                    </div>`
+            
+
+            //return 
+            
+                    
             console.log(article.news_desk)
-            if ((article.pub_date.slice(0,10)) === dateInput.value && (article.news_desk == newsDesk.value)) {
+            if ((article.pub_date.slice(0,10)) === dateInput.value && 
+            (article.news_desk == newsDesk.value)) {
                 console.log(newsDesk.value)
             return`<div class="relevantArticles"
                     <h2>${article.headline.main ? article.headline.main : "Title Unknown"}</h2>
@@ -62,7 +163,10 @@ function submitFunction() {
                     <p>${article.news_desk ? article.news_desk : "News Desk Unavailable"}</p>
                     <span>${article._id}</span>
                     </div>`
-/*
+
+
+
+
             } else if((article.pub_date.slice(0,10))=== dateInput.value){
                 return`<div class="relevantArticles"
                 <h2>${article.headline.main ? article.headline.main : "Title Unknown"}</h2>
@@ -72,14 +176,12 @@ function submitFunction() {
                 <p>${article.news_desk ? article.news_desk : "News Desk Unavailable"}</p>
                 <span>${article._id}</span>
                 </div>`               
-*/
-            }
-        })
 
-       articleDisplay.innerHTML = searchedArticles.join('')
+        }
+        )
+
+       //articleDisplay.innerHTML = searchedArticles.join('')
        
     }
-    
-    displayArticles()
-
-}
+            
+ //displayArticles() */
