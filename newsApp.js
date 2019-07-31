@@ -46,60 +46,68 @@ function maxInputDay(){
         console.log(dateInput.value)
         let articulos = articles[1].docs
         //console.log(sectionName.value)
-        let possibleSections = []
+        //let possibleSections = []
         let articleToReturn = articulos.filter(article => {
             //console.log(article.section_name)
-            if(!possibleSections.includes(article.section_name)){
+            /*if(!possibleSections.includes(article.section_name)){
                 possibleSections.push(article.section_name)
-            }
+            }*/
+            if(sectionName.value === "null"){
+                return article.pub_date.slice(0, 10) === dateInput.value 
+            }else{
             return (article.pub_date.slice(0, 10) === dateInput.value && article.section_name === sectionName.value)
+            }
         })
-        console.log('sections   ', possibleSections)
+        //console.log('sections   ', possibleSections)
         console.log(articleToReturn)
         console.log("filter articles function successful")
         return articleToReturn
     }
 
-    /*
-    function evaluateArticles(articlesToReturn){
+    
+    /*function evaluateArticles(articlesToReturn){
         //console.log(articlesToReturn[0].includes(newsDesk.value))
         //console.log(newsDesk.value)
-        let arrayOne = Object.values(articlesToReturn[0])
-        
-        console.log(arrayOne)
 
-        if(arrayOne.includes(newsDesk.value)){
-            displayArticles()
-        }else{
+
+        if(articlesToReturn == []){
             errorMessageFunction()
+        }else{
+            displayArticles()
         }
-    } */
-
+    } 
+*/
     function displayArticles(articlesToReturn){
-        searchedArticles = articlesToReturn.map(article => {
 
-        return `<div class="relevantArticles">
-        <h2>${article.headline.main ? article.headline.main : "Title Unknown"}</h2>
-        <h4>${article.byline ? article.byline.original : "Author Unknown"}</h4>
-        <p>${article.snippet ? article.snippet : "Snippet Unavailable"}</p>
-        <p>${article.web_url ? article.web_url : "URL Unavailable"}</p>
-        <p>${article.news_desk ? article.news_desk : "News Desk Unavailable"}</p>
-        <span>${article._id}</span>
-        </div>`
+            if(articlesToReturn.length < 1){
+                return articleDisplay.innerHTML = `<div>Sorry, your search did not return any articles.</div>`                
+                
+            }else if(articlesToReturn.length >= 1) { 
+                searchedArticles = articlesToReturn.map(article => {                
+                return `<div class="relevantArticles">
+                <h2>${article.headline.main ? article.headline.main : "Title Unknown"}</h2>
+                <h4>${article.byline ? article.byline.original : "Author Unknown"}</h4>
+                <p>${article.snippet ? article.snippet : "Snippet Unavailable"}</p>
+                <p>${article.web_url ? article.web_url : "URL Unavailable"}</p>
+                <p>${article.news_desk ? article.news_desk : "News Desk Unavailable"}</p>
+                <span>${article._id}</span>
+                </div>`  
 
-    })
+        })
+    }
 
         articleDisplay.innerHTML = searchedArticles.join("")
         console.log("display articles function successful")     
     
 }
-
+/*
 function errorMessageFunction(){
     articleDisplay.innerHTML = `<div>Sorry, your search did not return any articles.</div>`
+    console.log("error message successful")
 }
 
 
-
+*/
  async function submitFunction() {
     event.preventDefault()
 
