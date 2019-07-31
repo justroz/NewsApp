@@ -25,7 +25,7 @@ function maxInputDay(){
 
 
 
-function submitFunction() {
+ function submitFunction() {
     event.preventDefault()
 
 
