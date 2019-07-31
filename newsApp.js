@@ -27,11 +27,8 @@ function maxInputDay(){
 
 function submitFunction() {
     event.preventDefault()
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> master
+
     let dateToSearch = dateInput.value.split("-");
     monthToSearch = dateToSearch[1];
     monthToSearch = parseInt(monthToSearch);
