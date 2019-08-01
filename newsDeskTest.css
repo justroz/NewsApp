@@ -1,0 +1,22 @@
+body {
+    background-color: dimgray;
+}
+
+#container {
+    align-content: center;
+    max-width: 1000px;
+    height: 900px;
+    margin: auto;
+    background-image: url("newspaperBlur1.png");
+    background-repeat:repeat-y;
+    align-items: center;
+}
+
+.uk-card {
+    margin: 50px 100px;
+}
+
+.loginBox {
+    margin:0px;
+    
+}

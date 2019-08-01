@@ -1,0 +1,15 @@
+body {
+    background-color: dimgray;
+}
+
+#container {
+    margin-top: 
+    align-content: center;
+    max-width: 1000px;
+    height: 1000px;
+    margin: auto;
+    background-image: url("newspaperBlur1.png");
+    background-repeat:repeat-y;
+    align-items: center;
+}
+
