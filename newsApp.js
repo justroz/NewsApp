@@ -86,7 +86,7 @@ function maxInputDay(){
                 searchedArticles = articlesToReturn.map(article => {                
                 return `<div class="relevantArticles">
                 <h2>${article.headline.main ? article.headline.main : "Title Unknown"}</h2>
-                <h4>${article.byline ? article.byline.original : "Author Unknown"}</h4>
+                <h4>${!article.byline ? "Author Unknown" : article.byline.original ? article.byline.original : "Author Unknown"}</h4>
                 <p>${article.snippet ? article.snippet : "Snippet Unavailable"}</p>
                 <p>${article.web_url ? article.web_url : "URL Unavailable"}</p>
                 <p>${article.news_desk ? article.news_desk : "News Desk Unavailable"}</p>
