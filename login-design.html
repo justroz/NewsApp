@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NewsAppMain</title>
+        <link rel="stylesheet" href="login-design.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <link rel="stylesheet" href="login.css">
+        <script src="uikit/dist/js/uikit-icons.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
+    </head>
+
+    <body class="imageDiv">
+       
+        <div id="container">
+
+            <div id="loginSection">
+               
+            <input id="txtEmail" type="email" placeholder="Email">
+      
+            <input id="txtPassword" type="password" placeholder="Password">
+       
+            <button id="btnLogin" class="btn btn-action">Log in</button>
+       
+            <button id="btnSignUp" class="btn btn-secondary"> Sign up</button> 
+            <div id=errorMessage></div>   
+        </div>  
+
+    </div>
+
+    </div>
+  
+
+        <script src="login.js"></script>
+        <script src="auth.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>
