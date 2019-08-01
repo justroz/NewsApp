@@ -64,24 +64,36 @@ function filterArticles(articles) {
 }
 
 
-function displayCount(articlesToReturn){
-    let countOfArticles = `<div>Your search returned ${articlesToReturn.length} articles.</div>`
-    articleCount.innerHTML = countOfArticles
-}
+
 
 function displayArticles(articlesToReturn){
+    let countOfArticles = `<div>Your search returned ${articlesToReturn.length} articles.</div>`
+    articleCount.innerHTML = countOfArticles
     if(articlesToReturn.length < 1){
-        return articleDisplay.innerHTML = `<div>Sorry, your search did not return any articles.</div>`
+        return articleDisplay.innerHTML = `<div class="noDataDiv">Sorry, your search did not return any articles.</div>`
         
     }else if(articlesToReturn.length >= 1) { 
-        searchedArticles = articlesToReturn.map(article => {                
-        return `<div class="relevantArticles">
+        searchedArticles = articlesToReturn.map(article => {  
+          
+        let authorName = ""    
+        if(article.byline) {
+            if(article.byline.original) {
+                authorName = article.byline.original 
+            } else {
+                authorName = "Author Unknown"
+            }
+           
+        }    
+
+
+        return `<div class="relevantArticles uk-card uk-card-default uk-card-hover uk-card-body">
         <h2>${article.headline.main ? article.headline.main : "Title Unknown"}</h2>
-        <h4>${article.byline ? article.byline.original : "Author Unknown"}</h4>
+        <h4>${authorName}</h4>
         <p>${article.snippet ? article.snippet : "Snippet Unavailable"}</p>
-        <p>${article.web_url ? article.web_url : "URL Unavailable"}</p>
+        <a href="${article.web_url}">${article.web_url ? "Read Article": "#"}</a>
         <p>${article.news_desk ? article.news_desk : "News Desk Unavailable"}</p>
-        <span>${article._id}</span>
+        <span uk-icon="icon: heart"></span>
+
         </div>`  
 
         })
@@ -91,14 +103,6 @@ function displayArticles(articlesToReturn){
     console.log("display articles function successful")     
     
 }
-/*
-function errorMessageFunction(){
-    articleDisplay.innerHTML = `<div>Sorry, your search did not return any articles.</div>`
-    console.log("error message successful")
-}
-
-
-*/
 
 function monthInSearch(dateInput){
     let dateToSearch = dateInput.value.split("-");
@@ -124,7 +128,7 @@ let displayTheDate = monthToSearch + '/' + dayToSearch + '/' + yearToSearch
 return displayTheDate
 }
 
- async function submitFunction() {
+async function submitFunction() {
     event.preventDefault()
 
     let monthToSearch = monthInSearch(dateInput)
@@ -141,7 +145,7 @@ return displayTheDate
     let articles = await retrieveArticles(newsURL)
     let articlesToReturn = filterArticles(articles)
     console.log(articlesToReturn)
-    displayCount(articlesToReturn)
+    
     displayArticles(articlesToReturn)
 
 

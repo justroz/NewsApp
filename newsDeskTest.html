@@ -5,10 +5,178 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/uikit.min.css" />
+        <link rel="stylesheet" href="newsDeskTest.css">
         <script src="js/uikit.min.js"></script>
         <script src="js/uikit-icons.min.js"></script>
     </head>
+
     <body>
+        <div id="container">
+
+        
+        <nav class="uk-navbar-container uk-margin" uk-navbar>
+                <div class="uk-navbar-left">
+                    <a class="uk-navbar-item uk-logo" href="https://developer.nytimes.com/apis" target="_blank"><img src="logo.png"></a>
+                    
+                
+                    <ul class="uk-navbar-nav">
+                        <li>
+                            <a href="#">
+                                <span class="uk-icon uk-margin-small-right" uk-icon="icon: heart"></span>
+                                FAVORITES
+                            </a>
+                        </li>
+                    </ul>
+            
+                    <div class="uk-navbar-item">
+                        <div>Log Out</div>
+                    </div>
+               
+
+                    <div class="uk-inline">
+        
+        
+                    <form id="submitForm" method="GET">
+                        <div class="searchBar">
+
+                            <div id="navButtons">
+
+                            <h5>
+                            <label for="dateInput">Search Date:</label>
+                            <input id="dateInput" name="dateInput" min="1851-01-01" max="2019-01-01"  type="date">
+                            <label for="sectionName">Select Section:</label>
+
+                            <select name="sectionName" id="sectionName" class="uk-button uk-button-default">
+                                <option value ="null" disabled selected></option>
+    
+                                <option value='Arts'>Arts</option>
+                                <option value='Automobiles'>Automobiles</option>
+                                <option value='Books'>Books</option>
+                                <option value='Briefing'>Briefing</option>
+                                <option value='Business Day'>Business Day</option>
+                                <option value='Climate'>Climate</option>
+                                <option value='Corrections'>Corrections</option>
+                                <option value='Crosswords & Games'>Crosswords & Games</option>
+                                <option value='Education'>Education</option>
+                                <option value='Fashion & Style'>Fashion & Style</option>
+                                <option value='Food'>Food</option>
+                                <option value='Health'>Health</option>
+                                <option value='Magazine'>Magazine</option>
+                                <option value='Movies'>Movies</option>
+                                <option value='Multimedia/Photos'>Multimedia/Photos</option>
+                                <option value='New York'>New York</option>
+                                <option value='Obituaries'>Obituaries</option>
+                                <option value='Opinion'>Opinion</option>
+                                <option value='Parenting'>Parenting</option>
+                                <option value='Podcasts'>Podcasts</option>
+                                <option value='Reader Center'>Reader Center</option>
+                                <option value='Real Estate'>Real Estate</option>
+                                <option value='Science'>Science</option>
+                                <option value='Smarter Living'>Smarter Living</option>
+                                <option value='Sports'>Sports</option>
+                                <option value='Style'>Style</option>
+                                <option value='Sunday Review'>Sunday Review</option>
+                                <option value='T Brand'>T Brand</option>
+                                <option value='T Magazine'>T Magazine</option>
+                                <option value='Technology'>Technology</option>
+                                <option value='The Learning Network'>The Learning Network</option>
+                                <option value='The Upshot'>The Upshot</option>
+                                <option value='The Weekly'>The Weekly</option>
+                                <option value='Theater'>Theater</option>
+                                <option value='Times Insider'>Times Insider</option>
+                                <option value='Today’s Paper'>Today’s Paper</option>
+                                <option value='Travel'>Travel</option>
+                                <option value='U.S.'>U.S.</option>
+                                <option value='Universal'>Universal</option>
+                                <option value='Video'>Video</option>
+                                <option value='Well'>Well</option>
+                                <option value='World'>World</option>
+                                <option value='Your Money'>Your Money</option>
+                            </select>
+                            <button  type="submit" id="submitSearchButton">Submit</button>
+                            </h5>
+
+                            </div>
+
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </nav>
+
+            
+
+            <div>
+                Keep in mind that not every article is listed under a section header.<br>
+            The date being displayed is: 
+        <span id="displayDate"></span>
+        </div>
+        
+        <div id="articleCount">
+
+
+        </div>
+        
+        <div id="articleDisplay">
+        
+        
+        </div>
+        
+        
+        
+    <!-- <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+
+        <article class="uk-article">
+
+            <h1 class="uk-article-title"><a class="uk-link-reset" href="">Heading</a></h1>
+        
+            <p class="uk-article-meta">Written by <a href="#">Super User</a> on 12 April 2012. Posted in <a href="#">Blog</a></p>
+        
+            <p class="uk-text-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+        
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+            
+            <span uk-icon="icon: heart"></span>
+        
+        </article>
+
+        
+       
+    </div>
+        
+    <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+
+        <article class="uk-article">
+
+            <h1 class="uk-article-title"><a class="uk-link-reset" href="">Heading</a></h1>
+        
+            <p class="uk-article-meta">Written by <a href="#">Super User</a> on 12 April 2012. Posted in <a href="#">Blog</a></p>
+        
+            <p class="uk-text-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+        
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        
+        </article>
+       
+    </div>
+
+    <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+
+        <article class="uk-article">
+
+            <h1 class="uk-article-title"><a class="uk-link-reset" href="">Heading</a></h1>
+        
+            <p class="uk-article-meta">Written by <a href="#">Super User</a> on 12 April 2012. Posted in <a href="#">Blog</a></p>
+        
+            <p class="uk-text-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+        
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        
+        </article>
+       
+    </div> -->
 
 
 
@@ -18,11 +186,8 @@
 
 
 
+</div>
 
-
-
-
-
-
+<script src="newsApp.js"></script>
     </body>
 </html>

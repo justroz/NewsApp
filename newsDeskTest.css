@@ -1,0 +1,29 @@
+body {
+    background-color: dimgray;
+    min-height: 100vh;
+}
+
+#container {
+    align-content: center;
+    max-width: 1000px;
+    margin: auto;
+    background-image: url("newspaperBlur1.png");
+    background-repeat:repeat-y;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.uk-card {
+    margin: 50px 100px;
+}
+
+.loginBox {
+    margin:0px;
+    
+}
+
+#navButtons {
+    margin-left: 25px;
+    
+    
+}
