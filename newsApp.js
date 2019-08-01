@@ -89,8 +89,8 @@ function maxInputDay(){
                 <h4>${!article.byline ? "Author Unknown" : article.byline.original ? article.byline.original : "Author Unknown"}</h4>
                 <p>${article.snippet ? article.snippet : "Snippet Unavailable"}</p>
                 <p>${article.web_url ? article.web_url : "URL Unavailable"}</p>
-                <p>${article.news_desk ? article.news_desk : "News Desk Unavailable"}</p>
-                <span>${article._id}</span>
+                <p>${article.news_desk ? article.news_desk : "News Desk Unavailable"}</p> 
+                <button id="favoriteButton">Add to Favs</button>
                 </div>`  
 
         })
