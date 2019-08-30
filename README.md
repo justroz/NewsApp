@@ -20,11 +20,7 @@ know more about yourself.
 the languages used for the app is javascript, HTML, css, 
 
 
-
-
-
-
-
+<img src="newsapp.png" width="100%" height="550"/>
 
 
 # Installation
